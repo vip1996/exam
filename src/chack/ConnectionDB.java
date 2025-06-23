@@ -1,33 +1,27 @@
 package chack;
 
-import java.sql.*;
 import java.sql.Connection;
-import java.sql.DriverManager;;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class ConnectionDB { 
-	private static String url = "jdbc:sqlserver://localhost:1433;databaseName=ToDo;"
-            		     + "encrypt=true;"
-            		     + "trustServerCertificate=true";
-    private static String user = "test_user";
-    private static  String password = "1234";
-	
-    public static Connection getconnection() {
-          	
-        try {
-                        
-           Connection conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected Succesfully");            
-            return conn;
-            
-        } catch (SQLException e) {
-            System.out.println("Not Connected: " + e.getMessage());
-            
-        }
-		return null; 
-            }
-        
+/**
+ * Handles creating connections to the database.
+ */
+public class ConnectionDb {
+    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=ToDo;"
+            + "encrypt=true;"
+            + "trustServerCertificate=true";
+    private static final String USER = "test_user";
+    private static final String PASSWORD = "1234";
+
+    /**
+     * Get a new connection to the database.
+     * @return Connection object
+     * @throws SQLException if the connection fails
+     */
+    public static Connection getConnection() throws SQLException {
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        System.out.println("Connected successfully");
+        return conn;
     }
-    
-   
-
-
+}
