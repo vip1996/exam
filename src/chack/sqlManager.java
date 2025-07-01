@@ -2,10 +2,6 @@ package chack;
 
 import java.sql.*;
 
-/**
- * Implements the Tasks interface for managing to-do tasks in the database.
- * This version is decoupled from UI components.
- */
 public class SqlManager implements Tasks {
     @Override
     public void createTable() {
@@ -97,10 +93,7 @@ public class SqlManager implements Tasks {
 
     @Override
     public void closeDb() {
-        // In this design, connections are auto-closed with try-with-resources.
-        // Method provided for interface completeness.
         try (Connection conn = ConnectionDb.getConnection()) {
-            // Connection closed automatically
         } catch (SQLException e) {
             throw new RuntimeException("Failed to close DB connection: " + e.getMessage(), e);
         }
