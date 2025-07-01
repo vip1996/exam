@@ -1,9 +1,5 @@
 package chack;
 
-/**
- * Interface for task management operations.
- * Decoupled from UI components for flexibility and testability.
- */
 public interface Tasks {
     void createTable();
     void update(int id, String description, String title, String date, boolean completed);
